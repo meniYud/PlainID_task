@@ -8,7 +8,9 @@ export const init = ({lang}) => {
         i18n.init({
             lng: lang,
             resources: {
-                [lang]: {translation}
+                [lang]: { 
+                    common: {translation}
+                }
             }
         }, (err, t) => {
             if (err) return reject(err);
@@ -17,4 +19,8 @@ export const init = ({lang}) => {
             resolve();
         });
     });
+};
+
+export const addResource = ({ lang, ns, dictionary }) => {
+    i18n.addResourceBundle(lang, ns, dictionary);
 };
